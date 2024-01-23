@@ -32,7 +32,7 @@ public class UserController {
         int age = Integer.getInteger(param.get("age"),0);
         String email = param.get("email");
 
-        service.processRegistration("Sa", age, email);
+        service.processRegistration(name, age, email);
         return "User added from param!";
     }
 }
