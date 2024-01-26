@@ -17,5 +17,13 @@
                 <td th:text="${u.status}"></td>
             </tr>
         </table>
+
+
+        <h2>Добавить пользователя</h2>
+        <form action="/users" method="post">
+            Name: <input type="text" size="30" name="name"><br />
+            Status: <input type="text" placeholder="ADMIN, REGULAR, PRIVILEGED" size="30" name="status"><br />
+            <button type="submit">Добавить пользователя</button>
+        </form>
     </body>
     </html>

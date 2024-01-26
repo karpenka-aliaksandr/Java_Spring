@@ -1,4 +1,4 @@
-package gb.karpenka.Authenticator.model;
+package gb.karpenka.authenticator.model;
 
 public class User {
 
@@ -20,9 +20,4 @@ public class User {
     public void setStatus(Status status) {
         this.status = status;
     }
-}
-enum Status {
-    ADMIN,
-    REGULAR,
-    PRIVILEGED
 }
