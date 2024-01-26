@@ -4,8 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class StartController {
+public class UserController {
 
-    @RequestMapping("/start")
-    public String start() { return "start.html"; }
+    @RequestMapping("/users")
+    public String users() { return "users.html"; }
 }
