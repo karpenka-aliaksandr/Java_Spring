@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -21,6 +22,7 @@ public class TaskService {
     public List<Task> findByStatus(String status){
         return taskRepository.findByStatus(Status.valueOf(status));
     }
+
     public Task addTask(Task task){
         task.setCreationDate(LocalDateTime.now());
         try {
@@ -30,6 +32,16 @@ public class TaskService {
         }
         return taskRepository.save(task);
     }
+
+    public Task updateTaskStatus(Long id, Task replacementTask){
+        Task replacebleTask = findById(id);
+        replacebleTask.setStatus(replacementTask.getStatus());
+        return taskRepository.save(replacebleTask);
+    }
+
+    public Task findById(Long id) {return taskRepository.findById(id).get();}
+
+    public void deleteTask(Long id) {taskRepository.delete(taskRepository.findById(id).get());}
 
 
 
