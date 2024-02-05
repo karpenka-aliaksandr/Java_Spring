@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>PUBLIC DATA</title>
+</head>
+<body>
+<div class="navbar">
+	<nav class="navbar">
+		<h1 class="logo">Spring Boot Tutorial</h1>
+		<ul class="nav-links">
+			<li class="nav-item"><a href="/">Home</a></li>
+			<li sec:authorize="hasRole('USER')" class="nav-item"><a href="/public-data">Public DATA</a></li>
+			<li sec:authorize="hasRole('ADMIN')" class="nav-item"><a href="/private-data">Private DATA</a></li>
+			<li sec:authorize="!isAuthenticated()" class="nav-item"><a href="/login">Login</a></li>
+			<li sec:authorize="isAuthenticated()" class="nav-item">
+				<form class="link" th:action="@{/logout}" method="post">
+					<input class="link" type="submit" value="Logout"/>
+				</form></li>
+		</ul>
+	</nav>
+</div>
+	<div class="main">
+		<div class="text">
+			<h2 th:text="INDEX"></h2>
+		</div>
+		<div class="footer">
+			<p class="center">&#169; Example from internet</p>
+		</div>
+	</div>
+</body>
+</html>
