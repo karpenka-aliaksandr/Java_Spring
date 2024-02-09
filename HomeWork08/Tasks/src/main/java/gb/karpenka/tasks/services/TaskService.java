@@ -1,5 +1,6 @@
 package gb.karpenka.tasks.services;
 
+import gb.karpenka.tasks.aspects.ToLog;
 import gb.karpenka.tasks.model.Task;
 import gb.karpenka.tasks.model.Status;
 import gb.karpenka.tasks.repositories.TaskRepository;
@@ -32,13 +33,13 @@ public class TaskService {
         }
         return taskRepository.save(task);
     }
-
+    @ToLog
     public Task updateTaskStatus(Long id, Task replacementTask){
         Task replacebleTask = findById(id);
         replacebleTask.setStatus(replacementTask.getStatus());
         return taskRepository.save(replacebleTask);
     }
-
+    @ToLog
     public Task findById(Long id) {return taskRepository.findById(id).get();}
 
     public void deleteTask(Long id) {taskRepository.delete(taskRepository.findById(id).get());}
